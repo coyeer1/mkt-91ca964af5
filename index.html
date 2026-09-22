@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Competencia · Ibiza Motos — Informe de marketing</title>
+<meta name="description" content="Informe interactivo de la competencia local de Ibiza Motos SAS. Uso interno.">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23d7263d'/><text x='16' y='23' font-size='19' font-family='system-ui,sans-serif' font-weight='700' fill='%23fff' text-anchor='middle'>I</text></svg>">
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  color-scheme: light;
+  --surface-1:#fcfcfb;          /* superficie de gráfico/tarjeta */
+  --plane:#f4f3f0;              /* plano de página */
+  --raised:#ffffff;
+  --text-primary:#0b0b0b;
+  --text-secondary:#52514e;
+  --text-muted:#78766f;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --border-strong:rgba(11,11,11,.18);
+
+  /* énfasis: acento (nosotros) + gris de contexto (competencia) */
+  --accent:#d7263d;             /* rojo Ibiza */
+  --accent-ink:#a81a2d;
+  --context:#b0aea7;
+  --gold:#f9c846;
+  --gold-ink:#7a5c00;
+
+  /* estado — siempre con icono + etiqueta, nunca color solo */
+  --good:#0ca30c;
+  --warning:#fab219;
+  --serious:#ec835a;
+  --critical:#d03b3b;
+  --good-ink:#006300;
+
+  --shadow:0 1px 2px rgba(11,11,11,.05), 0 8px 24px -12px rgba(11,11,11,.18);
+  --radius:14px;
+  --maxw:1160px;
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme: dark;
+    --surface-1:#1a1a19;
+    --plane:#0d0d0d;
+    --raised:#212120;
+    --text-primary:#ffffff;
+    --text-secondary:#c3c2b7;
+    --text-muted:#928f86;
+    --grid:#2c2c2a;
+    --axis:#383835;
+    --border:rgba(255,255,255,.10);
+    --border-strong:rgba(255,255,255,.20);
+    --accent:#e66767;
+    --accent-ink:#f0908f;
+    --context:#57564f;
+    --gold:#f9c846;
+    --gold-ink:#f9c846;
+    --good-ink:#0ca30c;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d; --raised:#212120;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#928f86;
+  --grid:#2c2c2a; --axis:#383835;
+  --border:rgba(255,255,255,.10); --border-strong:rgba(255,255,255,.20);
+  --accent:#e66767; --accent-ink:#f0908f; --context:#57564f;
+  --gold:#f9c846; --gold-ink:#f9c846; --good-ink:#0ca30c;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-family:var(--font); background:var(--plane); color:var(--text-primary);
+  line-height:1.58; font-size:16px; -webkit-font-smoothing:antialiased;
+  overflow-wrap:break-word; overflow-x:hidden; max-width:100vw;
+}
+img,svg,table{max-width:100%}
+a{color:inherit}
+h1,h2,h3{line-height:1.22; margin:0; letter-spacing:-.018em; font-weight:700}
+h2{font-size:clamp(1.3rem,1.05rem + 1vw,1.75rem); margin-bottom:.15em}
+h3{font-size:1.045rem; margin-bottom:.4em}
+p{margin:.55em 0}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+.muted{color:var(--text-muted)}
+.sec-note{color:var(--text-secondary); font-size:.93rem; margin:.1em 0 1.15em}
+
+/* ============================================================
+   CABECERA
+   ============================================================ */
+header.top{
+  background:linear-gradient(160deg,#141414 0%,#242424 62%,#3a1016 100%);
+  color:#fff; padding:30px 0 26px; border-bottom:3px solid var(--accent);
+}
+.brandline{display:flex; align-items:center; gap:11px; flex-wrap:wrap}
+.chip-brand{
+  background:var(--accent); color:#fff; font-weight:700; font-size:.72rem;
+  letter-spacing:.1em; padding:5px 11px; border-radius:999px; text-transform:uppercase;
+}
+.chip-conf{
+  border:1px solid rgba(255,255,255,.3); color:#e9e8e3; font-size:.72rem;
+  padding:4px 11px; border-radius:999px; letter-spacing:.04em;
+}
+header.top h1{font-size:clamp(1.6rem,1.15rem + 2.2vw,2.5rem); margin:.42em 0 .12em; color:#fff}
+header.top .sub{color:#c9c7c0; font-size:.98rem; max-width:62ch; margin:0}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+nav.tabs{
+  position:sticky; top:0; z-index:60; background:var(--surface-1);
+  border-bottom:1px solid var(--border); box-shadow:0 1px 0 var(--border);
+}
+.tabs-inner{
+  max-width:var(--maxw); margin:0 auto; display:flex; gap:2px; overflow-x:auto;
+  scrollbar-width:none; padding:0 12px; align-items:center;
+}
+.tabs-inner::-webkit-scrollbar{display:none}
+.tab{
+  appearance:none; border:0; background:none; font:inherit; font-size:.9rem; font-weight:600;
+  color:var(--text-secondary); padding:13px 13px 11px; cursor:pointer; white-space:nowrap;
+  border-bottom:3px solid transparent; margin-bottom:-1px; border-radius:6px 6px 0 0;
+}
+.tab:hover{color:var(--text-primary); background:var(--plane)}
+.tab[aria-selected="true"]{color:var(--accent); border-bottom-color:var(--accent)}
+.tab:focus-visible{outline:2px solid var(--accent); outline-offset:-3px}
+.theme-btn{
+  margin-left:auto; appearance:none; border:1px solid var(--border-strong); background:var(--surface-1);
+  color:var(--text-secondary); border-radius:999px; padding:6px 13px; font:inherit; font-size:.8rem;
+  cursor:pointer; white-space:nowrap; flex:0 0 auto;
+}
+.theme-btn:hover{color:var(--text-primary); border-color:var(--text-muted)}
+
+/* ============================================================
+   PANELES Y TARJETAS
+   ============================================================ */
+main{padding:30px 0 70px}
+.panel{display:none; animation:fade .22s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0; transform:translateY(5px)}to{opacity:1; transform:none}}
+.card{
+  background:var(--surface-1); border:1px solid var(--border); border-radius:var(--radius);
+  padding:20px; box-shadow:var(--shadow); margin-bottom:18px;
+}
+.card.flush{padding:0; overflow:hidden}
+
+/* KPI */
+.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(178px,1fr)); gap:13px; margin-bottom:18px}
+.kpi{
+  background:var(--surface-1); border:1px solid var(--border); border-radius:var(--radius);
+  padding:16px 17px; box-shadow:var(--shadow); position:relative; overflow:hidden;
+}
+.kpi::before{content:""; position:absolute; inset:0 auto 0 0; width:3px; background:var(--context)}
+.kpi.is-alert::before{background:var(--critical)}
+.kpi.is-good::before{background:var(--good)}
+.kpi .k-label{font-size:.775rem; color:var(--text-muted); font-weight:600; letter-spacing:.02em}
+.kpi .k-value{font-size:1.95rem; font-weight:700; line-height:1.1; margin:.12em 0 .06em; letter-spacing:-.03em}
+.kpi .k-foot{font-size:.8rem; color:var(--text-secondary)}
+
+/* hero */
+.hero-fig{
+  display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;
+  border-left:4px solid var(--accent); padding-left:17px; margin:4px 0 20px;
+}
+.hero-num{font-size:clamp(2.6rem,2rem + 3vw,3.9rem); font-weight:700; line-height:.98; letter-spacing:-.045em; color:var(--accent)}
+.hero-txt{flex:1 1 300px; min-width:250px}
+
+/* listas de hallazgos */
+ol.findings{counter-reset:f; list-style:none; padding:0; margin:0}
+ol.findings li{
+  counter-increment:f; position:relative; padding:13px 0 13px 46px;
+  border-bottom:1px solid var(--grid);
+}
+ol.findings li:last-child{border-bottom:0; padding-bottom:2px}
+ol.findings li::before{
+  content:counter(f); position:absolute; left:0; top:13px; width:29px; height:29px;
+  background:var(--accent); color:#fff; border-radius:50%; display:grid; place-items:center;
+  font-weight:700; font-size:.86rem;
+}
+
+/* ============================================================
+   GRÁFICOS
+   ============================================================ */
+.chart-head{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap; margin-bottom:2px}
+.legend{display:flex; gap:14px; flex-wrap:wrap; margin:10px 0 14px; font-size:.83rem; color:var(--text-secondary)}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.swatch{width:13px; height:13px; border-radius:3px; flex:0 0 auto}
+.chart-svg{width:100%; height:auto; display:block; overflow:visible}
+.chart-svg text{font-family:var(--font)}
+.bar{transition:opacity .13s}
+.chart-svg:hover .bar{opacity:.55}
+.chart-svg .bar:hover,.chart-svg .barhit:hover + .bar{opacity:1}
+.barhit{fill:transparent; cursor:pointer}
+.viewtoggle{
+  appearance:none; border:1px solid var(--border-strong); background:var(--surface-1); color:var(--text-secondary);
+  border-radius:8px; padding:5px 11px; font:inherit; font-size:.79rem; cursor:pointer; white-space:nowrap;
+}
+.viewtoggle:hover{color:var(--text-primary)}
+.tip{
+  position:fixed; z-index:200; pointer-events:none; opacity:0; transform:translateY(3px);
+  background:var(--text-primary); color:var(--surface-1); font-size:.8rem; line-height:1.45;
+  padding:8px 11px; border-radius:9px; box-shadow:0 6px 22px rgba(0,0,0,.28); transition:opacity .12s, transform .12s;
+  max-width:250px;
+}
+.tip.on{opacity:1; transform:none}
+.tip b{color:var(--surface-1)}
+
+/* ============================================================
+   TABLAS
+   ============================================================ */
+.tablewrap{overflow-x:auto; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; font-size:.9rem; min-width:540px}
+th,td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--grid); vertical-align:top}
+thead th{
+  font-size:.74rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted);
+  background:var(--plane); position:sticky; top:0; font-weight:700; white-space:nowrap;
+}
+tbody tr:hover{background:var(--plane)}
+tbody tr.is-us{background:color-mix(in srgb,var(--accent) 9%,transparent)}
+tbody tr.is-us:hover{background:color-mix(in srgb,var(--accent) 14%,transparent)}
+tbody tr.is-us td{font-weight:600}
+td.num{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+.rowname{font-weight:600}
+
+/* filtros */
+.filters{display:flex; gap:9px; flex-wrap:wrap; align-items:center; margin-bottom:14px}
+.filters input[type=search]{
+  flex:1 1 210px; min-width:170px; font:inherit; font-size:.88rem; padding:8px 12px;
+  border:1px solid var(--border-strong); border-radius:9px; background:var(--surface-1); color:var(--text-primary);
+}
+.filters input[type=search]:focus{outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent)}
+.pill{
+  appearance:none; border:1px solid var(--border-strong); background:var(--surface-1); color:var(--text-secondary);
+  border-radius:999px; padding:6px 13px; font:inherit; font-size:.82rem; cursor:pointer; white-space:nowrap;
+}
+.pill:hover{color:var(--text-primary); border-color:var(--text-muted)}
+.pill[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600}
+
+/* estado con icono + etiqueta (nunca color solo) */
+.st{display:inline-flex; align-items:center; gap:5px; font-size:.8rem; font-weight:600; white-space:nowrap}
+.st i{width:15px; height:15px; border-radius:50%; display:grid; place-items:center; font-style:normal; font-size:.66rem; color:#fff; flex:0 0 auto}
+.st-yes i{background:var(--good)} .st-yes{color:var(--good-ink)}
+.st-no  i{background:var(--critical)} .st-no{color:var(--critical)}
+.st-warn i{background:var(--warning); color:#3a2a00} .st-warn{color:var(--text-secondary)}
+.st-na  i{background:var(--text-muted)} .st-na{color:var(--text-muted)}
+
+/* matriz */
+.matrix td:not(:first-child){text-align:center}
+.matrix .cellmark{font-size:1rem; font-weight:700}
+
+/* callouts */
+.callout{
+  border-left:4px solid var(--gold); background:color-mix(in srgb,var(--gold) 11%,transparent);
+  padding:13px 16px; border-radius:0 10px 10px 0; margin:15px 0; font-size:.92rem;
+}
+.callout.warn{border-left-color:var(--critical); background:color-mix(in srgb,var(--critical) 9%,transparent)}
+.callout.ok{border-left-color:var(--good); background:color-mix(in srgb,var(--good) 9%,transparent)}
+.callout strong{color:var(--text-primary)}
+
+/* quotes */
+.quotes{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px}
+.quote{
+  background:var(--plane); border:1px solid var(--border); border-radius:11px; padding:14px 15px;
+}
+.quote q{font-size:1rem; font-weight:600; display:block; margin-bottom:6px; color:var(--text-primary)}
+.quote q::before{content:"“"} .quote q::after{content:"”"}
+.quote .who{font-size:.78rem; color:var(--accent); font-weight:700; letter-spacing:.02em}
+.quote .why{font-size:.84rem; color:var(--text-secondary); margin-top:4px}
+
+/* plan */
+.phase{margin-bottom:22px}
+.phase-head{display:flex; align-items:center; gap:10px; margin-bottom:9px; flex-wrap:wrap}
+.phase-tag{
+  font-size:.7rem; font-weight:800; letter-spacing:.09em; padding:4px 10px; border-radius:999px; color:#fff;
+}
+.p0{background:var(--critical)} .p1{background:var(--serious); color:#3a1500} .p2{background:var(--text-muted)}
+.task{
+  display:flex; gap:12px; align-items:flex-start; padding:12px 14px; border:1px solid var(--border);
+  border-radius:11px; background:var(--surface-1); margin-bottom:9px; cursor:pointer;
+}
+.task:hover{border-color:var(--text-muted)}
+.task input{
+  appearance:none; width:21px; height:21px; border:2px solid var(--axis); border-radius:6px;
+  flex:0 0 auto; margin-top:2px; cursor:pointer; position:relative; background:var(--surface-1);
+}
+.task input:checked{background:var(--good); border-color:var(--good)}
+.task input:checked::after{
+  content:"✓"; position:absolute; inset:0; display:grid; place-items:center; color:#fff; font-size:.82rem; font-weight:700;
+}
+.task input:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.task-body{flex:1}
+.task-t{font-weight:600; display:block}
+.task-d{font-size:.87rem; color:var(--text-secondary); display:block; margin-top:2px}
+.task.done .task-t{text-decoration:line-through; color:var(--text-muted)}
+.task.done .task-d{color:var(--text-muted)}
+.progress-wrap{display:flex; align-items:center; gap:12px; margin-bottom:18px; flex-wrap:wrap}
+.progress-track{flex:1 1 200px; height:9px; background:var(--grid); border-radius:999px; overflow:hidden; min-width:150px}
+.progress-fill{height:100%; background:var(--good); border-radius:999px; width:0; transition:width .3s}
+.progress-label{font-size:.85rem; color:var(--text-secondary); font-variant-numeric:tabular-nums; white-space:nowrap}
+
+/* kit de links */
+.linkrow{
+  display:flex; align-items:center; gap:10px; padding:11px 13px; border:1px solid var(--border);
+  border-radius:11px; margin-bottom:8px; background:var(--surface-1); flex-wrap:wrap;
+}
+.linkrow .lname{font-weight:600; flex:1 1 150px; min-width:120px}
+.btn{
+  appearance:none; border:1px solid var(--border-strong); background:var(--surface-1); color:var(--text-secondary);
+  border-radius:9px; padding:7px 13px; font:inherit; font-size:.82rem; font-weight:600; cursor:pointer;
+  text-decoration:none; display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
+}
+.btn:hover{color:var(--text-primary); border-color:var(--text-muted)}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
+.btn.primary:hover{background:var(--accent-ink); border-color:var(--accent-ink); color:#fff}
+.btn.copied{background:var(--good); border-color:var(--good); color:#fff}
+
+details.how{border:1px solid var(--border); border-radius:11px; padding:0; margin:14px 0; background:var(--plane)}
+details.how summary{padding:12px 15px; cursor:pointer; font-weight:600; font-size:.92rem; list-style:none}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary::before{content:"▸ "; color:var(--accent); font-weight:700}
+details.how[open] summary::before{content:"▾ "}
+details.how .inner{padding:0 15px 14px; font-size:.9rem; color:var(--text-secondary)}
+details.how ol{padding-left:20px; margin:.4em 0}
+details.how li{margin:.4em 0}
+
+footer{
+  border-top:1px solid var(--border); padding:24px 0 40px; color:var(--text-muted); font-size:.83rem;
+}
+
+/* ============================================================
+   RESPONSIVE / IMPRESIÓN
+   ============================================================ */
+@media (max-width:640px){
+  .wrap{padding:0 15px}
+  .card{padding:16px 14px}
+  header.top{padding:22px 0 20px}
+  .kpi .k-value{font-size:1.65rem}
+  th,td{padding:9px 10px}
+  .nobr{display:none}            /* el titular envuelve solo en pantallas chicas */
+  header.top h1{font-size:1.5rem}
+  .hero-num{font-size:2.5rem}
+  .quotes{grid-template-columns:1fr}
+  .tablewrap{
+    margin:0 -14px; padding:0 14px;   /* la tabla puede deslizarse de borde a borde */
+    box-shadow:inset -14px 0 12px -14px rgba(0,0,0,.16);
+  }
+}
+@media print{
+  nav.tabs,.theme-btn,.viewtoggle,.filters,.btn{display:none !important}
+  .panel{display:block !important; page-break-before:always}
+  .panel:first-of-type{page-break-before:avoid}
+  body{background:#fff; color:#000; font-size:11pt}
+  .card{box-shadow:none; border:1px solid #bbb; break-inside:avoid}
+  header.top{background:#fff !important; color:#000 !important; border-bottom:2px solid #d7263d}
+  header.top h1,header.top .sub{color:#000 !important}
+  table{min-width:0}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms !important; transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandline">
+      <span class="chip-brand">Ibiza Motos SAS</span>
+      <span class="chip-conf">Uso interno · Marketing</span>
+      <span class="chip-conf">Datos del 21–22 sept 2026</span>
+    </div>
+    <h1>Qué está haciendo la competencia <br class="nobr">y qué les está funcionando</h1>
+    <p class="sub">13 concesionarios del Eje Cafetero y Neiva, revisados en sus webs, redes y avisos públicos. Toca cada pestaña para ver el detalle.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Secciones del informe">
+  <div class="tabs-inner" role="tablist">
+    <button class="tab" role="tab" aria-selected="true"  data-panel="resumen">Resumen</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="rivales">Competidores</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="redes">Instagram</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="pauta">Pauta Meta</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="web">Web y SEO</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="oferta">Ofertas</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="plan">Plan</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="kit">Kit de stalkeo</button>
+    <button class="theme-btn" id="themeBtn" title="Cambiar tema">◐ Tema</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ============ RESUMEN ============ -->
+<section class="panel active" id="p-resumen" role="tabpanel">
+  <div class="kpis">
+    <div class="kpi is-alert">
+      <div class="k-label">Seguidores IG · Ibiza</div>
+      <div class="k-value">735</div>
+      <div class="k-foot">Zagamotos tiene <strong>10,6×</strong> más</div>
+    </div>
+    <div class="kpi is-alert">
+      <div class="k-label">Sin publicar en IG</div>
+      <div class="k-value" id="kpiDias">—</div>
+      <div class="k-foot">desde junio 2026</div>
+    </div>
+    <div class="kpi is-alert">
+      <div class="k-label">Píxeles en la web</div>
+      <div class="k-value">0</div>
+      <div class="k-foot">la pauta se gastaría a ciegas</div>
+    </div>
+    <div class="kpi is-good">
+      <div class="k-label">Ventaja real</div>
+      <div class="k-value">8</div>
+      <div class="k-foot">financieras · nadie más tiene tantas</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="hero-fig">
+      <div class="hero-num">7,6&nbsp;KB</div>
+      <div class="hero-txt">
+        <h3 style="margin-bottom:.15em">Es todo lo que Google y WhatsApp ven de ibizamotos.co</h3>
+        <p class="muted" style="margin:0">Zagamotos entrega 181 KB con modelos y precios. Por eso cuando un asesor pega el link de una moto en WhatsApp, la vista previa llega vacía: sin foto, sin modelo y sin precio.</p>
+      </div>
+    </div>
+
+    <h2>Los 5 puntos</h2>
+    <p class="sec-note">Lo mínimo que debería saber el jefe si solo lee una pantalla.</p>
+    <ol class="findings">
+      <li><strong>El rival fuerte es Zagamotos.</strong> AKT, Suzuki, Bajaj y UMA en Pereira y Dosquebradas. 7.773 seguidores, tienda en línea con 49 modelos <em>con precio publicado</em>, y Meta Pixel + Google Tag Manager + Analytics instalados. Es el único de la zona con la maquinaria completa.</li>
+      <li><strong>Vamos perdiendo donde es más barato competir.</strong> @ibizamotossas tiene 735 seguidores y no publica desde junio. Zagamotos, MotoCity y Motos JYD publicaron esta semana.</li>
+      <li><strong>Nadie vende motos: todos venden crédito.</strong> Los ganchos que repiten son «solo con tu cédula», «crédito directo», «sin cuota inicial», «aunque estés reportado» y «recibimos tu moto». Ibiza trabaja con 8 financieras —el mejor arsenal de la zona— y no lo comunica.</li>
+      <li><strong>La web no mide nada ni puede hacer remarketing.</strong> No hay Meta Pixel ni Analytics: el archivo <code>Analytics.tsx</code> quedó como plantilla vacía. Cada peso de pauta se gastaría sin saber qué anuncio vendió.</li>
+      <li><strong>La web tampoco es visible.</strong> Al ser una SPA sin renderizado en servidor, los robots ven una página en blanco. Las búsquedas de «motos a crédito Pereira» hoy se las llevan MercadoLibre y quienes publican precio.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Dónde ganamos y no lo estamos usando</h2>
+    <p class="sec-note">Ventajas que ya existen pero no aparecen donde el cliente decide.</p>
+    <div class="quotes">
+      <div class="quote"><q>19 sucursales</q><div class="who">Nadie en la zona</div><div class="why">Ningún competidor local tiene esa cobertura. Son 19 públicos locales distintos para pauta.</div></div>
+      <div class="quote"><q>8 financieras</q><div class="who">Ellos mencionan 1 o 2</div><div class="why">Progreser, Banco de Bogotá, SUFI, Brilla, Addi, Venfi, Sistecrédito y Crediorbe.</div></div>
+      <div class="quote"><q>6 marcas en un punto</q><div class="who">Solo Moto Crédito iguala</div><div class="why">El cliente compara sin moverse de la sede.</div></div>
+      <div class="quote"><q>Calculadora de cuota</q><div class="who">Mejor que la de ellos</div><div class="why">Ya está hecha en la web y funciona con las 8 financieras.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPETIDORES ============ -->
+<section class="panel" id="p-rivales" role="tabpanel">
+  <div class="card">
+    <h2>Mapa de la competencia local</h2>
+    <p class="sec-note">Filtra por ciudad o busca por marca. La fila resaltada somos nosotros.</p>
+    <div class="filters">
+      <input type="search" id="qRivals" placeholder="Buscar: Suzuki, Pereira, crédito…" aria-label="Buscar competidor">
+      <button class="pill" data-city="all" aria-pressed="true">Todas</button>
+      <button class="pill" data-city="Pereira" aria-pressed="false">Pereira</button>
+      <button class="pill" data-city="Dosquebradas" aria-pressed="false">Dosquebradas</button>
+      <button class="pill" data-city="Santa Rosa" aria-pressed="false">Santa Rosa</button>
+      <button class="pill" data-city="Neiva" aria-pressed="false">Neiva</button>
+    </div>
+    <div class="tablewrap">
+      <table id="tRivals">
+        <thead><tr><th>Competidor</th><th>Dónde</th><th>Marcas</th><th>Amenaza</th><th>Por qué</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="muted" style="font-size:.83rem; margin-top:10px"><span id="rivalCount"></span></p>
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM ============ -->
+<section class="panel" id="p-redes" role="tabpanel">
+  <div class="card">
+    <div class="chart-head">
+      <div>
+        <h2>Seguidores en Instagram</h2>
+        <p class="sec-note">Leído de cada perfil público el 22 de septiembre de 2026.</p>
+      </div>
+      <button class="viewtoggle" data-toggle="chartFollowers">Ver como tabla</button>
+    </div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--accent)"></span> Ibiza Motos (nosotros)</span>
+      <span><span class="swatch" style="background:var(--context)"></span> Competencia</span>
+    </div>
+    <div id="chartFollowers"></div>
+    <div id="chartFollowers-table" hidden></div>
+  </div>
+
+  <div class="card">
+    <div class="chart-head">
+      <div>
+        <h2>Días sin publicar</h2>
+        <p class="sec-note">La cadencia es lo que separa a los perfiles que crecen de los que se estancan.</p>
+      </div>
+      <button class="viewtoggle" data-toggle="chartSilence">Ver como tabla</button>
+    </div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--accent)"></span> Ibiza Motos (nosotros)</span>
+      <span><span class="swatch" style="background:var(--context)"></span> Competencia</span>
+    </div>
+    <div id="chartSilence"></div>
+    <div id="chartSilence-table" hidden></div>
+    <div class="callout warn">
+      <strong>Lo que se ve claro:</strong> los dos perfiles con más seguidores (Zagamotos y MotoCity) son exactamente los dos que publican varias veces por semana. Los que publican por rachas y abandonan —Aventura Motors, Motos y Más, y nosotros— se quedaron estancados.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Qué dice cada uno en su bio</h2>
+    <p class="sec-note">La bio es el aviso clasificado del perfil: ahí ponen su mejor argumento de venta.</p>
+    <div class="tablewrap">
+      <table id="tBios">
+        <thead><tr><th>Cuenta</th><th class="num">Seguidores</th><th>Última publicación</th><th>Gancho en la bio</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <strong>El detalle que más pesa:</strong> Zagamotos y MotoCity ponen la <em>oferta</em> en la bio (crédito, solo cédula, permuta). Nosotros ponemos la lista de marcas —y encima con un error de ortografía, «DISTRIBUDOR»—, que no le resuelve al cliente la duda con la que llega: «¿me lo aprueban?» y «¿cuánto de inicial?».
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>TikTok: el canal vacío</h2>
+    <p><strong>Ibiza no tiene presencia en TikTok, y en esta plaza casi nadie la tiene.</strong> Es el único canal donde hoy queda espacio libre.</p>
+    <p class="muted">Lo confirmado: el segmento existe y es activo aquí —hay cuentas locales como <code>@capitalmotos_dosq</code> y volumen real de búsquedas alrededor de «motos a crédito para reportados», «compraventa de motos Pereira» y «comprar moto con Sistecrédito». TikTok bloquea la lectura automática, así que el detalle se revisa a mano desde el celular (ver el Kit).</p>
+  </div>
+</section>
+
+<!-- ============ PAUTA ============ -->
+<section class="panel" id="p-pauta" role="tabpanel">
+  <div class="card">
+    <h2>Quién tiene la maquinaria para pautar en serio</h2>
+    <p class="sec-note">Revisado en el código de cada sitio. Un píxel instalado significa que pueden perseguir por Facebook e Instagram a quien entró y no compró.</p>
+    <div class="tablewrap">
+      <table class="matrix" id="tTools">
+        <thead><tr><th>Sitio</th><th>Meta Pixel</th><th>Google Tag Manager</th><th>Analytics</th><th>Chat web</th><th>Tienda online</th><th class="num">HTML servido</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="callout warn">
+      <strong>Traducción al negocio:</strong> si mañana el jefe aprueba $2.000.000 de pauta, hoy no hay forma de saber qué anuncio trajo ventas, ni de armar públicos de remarketing, ni de excluir a los que ya compraron. Zagamotos sí puede.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Cómo espiar su pauta (y por qué no se puede automatizar)</h2>
+    <p>La ley obliga a Meta a mostrar <strong>todos los anuncios activos de cualquier anunciante</strong>, gratis y sin iniciar sesión. Se ve el anuncio completo: imagen, video, texto y <strong>desde cuándo está corriendo</strong>.</p>
+    <div class="callout">
+      <strong>Ojo, para no perder tiempo:</strong> la <em>API</em> de la Biblioteca de Anuncios solo entrega anuncios políticos a nivel mundial y todos los anuncios únicamente en Europa y Reino Unido. <strong>Los anuncios comerciales de Colombia no salen por API</strong> —ni con el token permanente que ya tiene el CRM—. Pero en el navegador se ven completos. Los links directos están en la pestaña <em>Kit de stalkeo</em>.
+    </div>
+    <details class="how" open>
+      <summary>Cómo leer la Biblioteca de Anuncios (esto es lo que casi nadie sabe)</summary>
+      <div class="inner">
+        <ol>
+          <li><strong>Mira la fecha «Se empezó a publicar el…».</strong> Un anuncio que lleva más de 30 días corriendo <em>es un anuncio que les está funcionando</em> — nadie quema presupuesto meses en algo que no vende. Esos son los que hay que estudiar.</li>
+          <li><strong>Cuenta las versiones.</strong> Si dice «este anuncio tiene N versiones», están haciendo pruebas A/B: invierten en serio.</li>
+          <li><strong>Anota la oferta literal</strong>, no el diseño. Lo que importa es si dicen «sin cuota inicial», «solo con tu cédula», «bono SOAT», un precio o una cuota mensual.</li>
+          <li><strong>Mira el destino:</strong> ¿el botón lleva a WhatsApp, a un formulario o a la web? Si mandan a WhatsApp, juegan nuestro mismo juego.</li>
+          <li><strong>Formato:</strong> ¿video vertical con una persona hablando, o foto de catálogo? En motos, el video con vendedor de carne y hueso viene ganando.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ WEB ============ -->
+<section class="panel" id="p-web" role="tabpanel">
+  <div class="card">
+    <h2>Nosotros contra el referente</h2>
+    <p class="sec-note">Zagamotos es la vara de medir en esta plaza.</p>
+    <div class="tablewrap">
+      <table id="tVersus">
+        <thead><tr><th>&nbsp;</th><th>Ibiza Motos</th><th>Zagamotos</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>El problema de fondo del sitio</h2>
+    <p><code>ibizamotos.co</code> es una aplicación React sin renderizado en servidor. Eso significa que <strong>cualquier cosa que no ejecute JavaScript ve una página vacía</strong>: la vista previa de enlaces de WhatsApp, la de Facebook y buena parte de los rastreadores de Google.</p>
+    <p>Cuando un asesor manda el link de la Gixxer por WhatsApp, al cliente le llega una tarjeta sin foto, sin modelo y sin precio. El link de Zagamotos llega con producto y precio.</p>
+    <div class="callout ok">
+      <strong>La buena noticia:</strong> el dato de los precios ya existe. El actualizador desde el Excel (<code>actualizar_precios.py</code>) ya llena el catálogo — lo único que falta es mostrarlo y que los robots puedan leerlo.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Cómo captura leads cada uno</h2>
+    <div class="tablewrap">
+      <table id="tLeads">
+        <thead><tr><th>Competidor</th><th>Puertas de entrada</th><th class="num">Nº</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="muted" style="font-size:.86rem; margin-top:10px">Zagamotos tiene cuatro puertas; casi todos los demás —incluidos nosotros— dependen de una sola: WhatsApp.</p>
+  </div>
+</section>
+
+<!-- ============ OFERTA ============ -->
+<section class="panel" id="p-oferta" role="tabpanel">
+  <div class="card">
+    <h2>Los ganchos que usan, palabra por palabra</h2>
+    <p class="sec-note">Tal cual aparecen publicados. Esto es lo que hay que copiar: la oferta, no la pieza.</p>
+    <div class="tablewrap">
+      <table id="tHooks">
+        <thead><tr><th>Gancho</th><th>Quién lo usa</th><th>Por qué funciona</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Precios que sí publican</h2>
+    <p class="sec-note">Capturado el 22 de septiembre de 2026. Sirve para comparar contra nuestra lista.</p>
+    <div class="tablewrap">
+      <table id="tPrices">
+        <thead><tr><th>Modelo</th><th class="num">Precio Zagamotos</th><th class="num">Antes</th><th class="num">Descuento</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="muted" style="font-size:.86rem; margin-top:12px">
+      <strong>Rangos publicados:</strong> Suzuki Pereira Principal $6.050.000 – $103.500.000 (Hayabusa) · Tu Moto RAM, usadas, $3.900.000 – $10.500.000.
+    </p>
+    <div class="callout">
+      <strong>El truco del precio tachado:</strong> Zagamotos genera urgencia sin anunciar «promoción». El cliente ve que el precio bajó y calcula el ahorro solo.
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAN ============ -->
+<section class="panel" id="p-plan" role="tabpanel">
+  <div class="card">
+    <h2>Plan de acción</h2>
+    <p class="sec-note">Ordenado por costo/beneficio. Marca lo que vayas completando — queda guardado en este dispositivo.</p>
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+      <div class="progress-label" id="progLabel">0 de 11</div>
+      <button class="btn" id="resetPlan">Reiniciar</button>
+    </div>
+    <div id="planHost"></div>
+  </div>
+</section>
+
+<!-- ============ KIT ============ -->
+<section class="panel" id="p-kit" role="tabpanel">
+  <div class="card">
+    <h2>Biblioteca de Anuncios de Meta</h2>
+    <p class="sec-note">Clic para abrir los anuncios activos de cada uno. Es información pública: la ley obliga a Meta a mostrarla.</p>
+    <div id="adLinks"></div>
+  </div>
+
+  <div class="card">
+    <h2>Perfiles de Instagram</h2>
+    <div id="igLinks"></div>
+  </div>
+
+  <div class="card">
+    <h2>TikTok</h2>
+    <div class="linkrow">
+      <span class="lname">Creative Center — Colombia, sector vehículos</span>
+      <a class="btn primary" target="_blank" rel="noopener" href="https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en?region=CO">Abrir</a>
+    </div>
+    <p class="muted" style="font-size:.87rem; margin-top:10px">Gratis y sin cuenta. Filtra por <strong>Región: Colombia</strong> e <strong>Industria: Vehicles &amp; Transportation</strong> para ver qué anuncios rinden en el país.</p>
+    <p style="font-size:.9rem"><strong>Búsquedas a mano dentro de la app</strong> (son las que usa el cliente real de esta zona): «motos a crédito Pereira» · «motos para reportados» · «moto sin cuota inicial» · «compraventa de motos Pereira» · «moto con Sistecrédito».</p>
+  </div>
+
+  <div class="card">
+    <h2>La rutina</h2>
+    <details class="how" open>
+      <summary>15 minutos cada lunes</summary>
+      <div class="inner"><ol>
+        <li>Abrir los links de la Biblioteca de Anuncios y anotar cuántos anuncios activos tiene cada uno y qué oferta usan.</li>
+        <li>Abrir los perfiles de Instagram: ¿publicaron esta semana?, ¿qué formato?, ¿qué gancho?</li>
+        <li>Si alguien lanzó promoción nueva (bono, descuento, cuota inicial en cero), captura de pantalla con nombre <code>AAAA-MM-DD-competidor-tema.png</code>.</li>
+      </ol></div>
+    </details>
+    <details class="how">
+      <summary>45 minutos el primer lunes de cada mes</summary>
+      <div class="inner"><ol>
+        <li>Correr <code>vigilar-webs.ps1</code> → dice qué sitios cambiaron y qué precios movieron.</li>
+        <li>Anotar seguidores de Instagram de cada competidor (van a mano: Instagram no entrega ese dato a scripts).</li>
+        <li>Revisar TikTok.</li>
+        <li>Escribir una hoja de conclusiones: <strong>qué vamos a copiar este mes</strong>.</li>
+      </ol></div>
+    </details>
+    <details class="how">
+      <summary>Reglas de la casa</summary>
+      <div class="inner">
+        <p>Solo fuentes públicas. Nada de cuentas falsas, ni pedir cotizaciones haciéndose pasar por cliente a nombre de Ibiza, ni contactar a sus empleados.</p>
+        <p>No copiar imágenes, videos ni textos de la competencia: se copia <strong>la estrategia</strong> (la oferta, el formato, la frecuencia), no la pieza. Copiar la pieza es problema legal y además se nota.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <h2>Qué quedó fuera y por qué</h2>
+    <div class="tablewrap">
+      <table id="tGaps">
+        <thead><tr><th>Pendiente</th><th>Motivo</th><th>Cómo se resuelve</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Ibiza Motos SAS · Informe de competencia.</strong> Levantamiento del 21–22 de septiembre de 2026 sobre fuentes 100 % públicas: webs, perfiles abiertos, buscadores y la Biblioteca de Anuncios de Meta.</p>
+    <p>Las cifras de seguidores y los precios fueron leídos directamente de cada fuente en esa fecha. No incluye presupuestos de pauta de terceros (no son públicos en ningún país) ni datos de Facebook o TikTok, que bloquean la lectura automática.</p>
+    <p style="margin-top:12px"><button class="btn" onclick="window.print()">🖨 Imprimir o guardar en PDF</button></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   DATOS  —  para actualizar el informe, edita solo este bloque
+   ============================================================ */
+const DATA = {
+  asOf: "2026-09-22",
+
+  followers: [
+    {name:"Zagamotos",        handle:"zagamotosoficial",             v:7773, last:"2026-09-17", us:false},
+    {name:"MotoCity",         handle:"motocity_concesionario",       v:6222, last:"2026-09-18", us:false},
+    {name:"Motos JYD",        handle:"motosjyd",                     v:1219, last:"2026-09-21", us:false},
+    {name:"Aventura Motors",  handle:"aventuramotorsdosquebradas",   v:1154, last:"2026-07-24", us:false},
+    {name:"Ibiza Motos",      handle:"ibizamotossas",                v:735,  last:"2026-06-30", us:true },
+    {name:"Suzuki Santa Rosa",handle:"suzukisantarosac",             v:586,  last:"2026-09-14", us:false},
+    {name:"Motos y Más",      handle:"motos_ymaspereira",            v:262,  last:"2026-07-31", us:false}
+  ],
+
+  bios: [
+    {n:"@zagamotosoficial",        f:7773, last:"16–18 sept 2026", hook:"Tu próxima moto empieza aquí · Crédito rápido y sin complicaciones · Solo con tu cédula · Recibimos tu…", us:false},
+    {n:"@motocity_concesionario",  f:6222, last:"18 sept 2026",    hook:"La moto de tus sueños está aquí · Compra, vende o permuta tu moto · Diferentes medios de pago", us:false},
+    {n:"@motosjyd",                f:1219, last:"21 sept 2026",    hook:"Tu moto en las mejores manos · Venta | Repuestos | Servicio técnico", us:false},
+    {n:"@aventuramotorsdosquebradas",f:1154,last:"24 jul 2026",    hook:"Distribuidor Auteco autorizado: Kawasaki, Victory, Benelli, Kymco, Zontes", us:false},
+    {n:"@ibizamotossas",           f:735,  last:"junio 2026",      hook:"«DISTRIBUDOR AUTORIZADO DE LAS MARCAS…» — lista de marcas, sin oferta y con error de ortografía", us:true},
+    {n:"@suzukisantarosac",        f:586,  last:"14 sept 2026",    hook:"Concesionario de motocicletas · Servicio técnico especializado · Repuestos originales", us:false},
+    {n:"@motos_ymaspereira",       f:262,  last:"31 jul 2026",     hook:"Más de 30 años de trayectoria · Crédito directo", us:false}
+  ],
+
+  rivals: [
+    {n:"Zagamotos", city:"Pereira · Dosquebradas · Cartago", cityKey:["Pereira","Dosquebradas"], brands:"AKT, Suzuki, Bajaj, UMA", threat:3, why:"Amenaza principal. Cadena con músculo digital, e-commerce y el crédito como producto"},
+    {n:"MotoCity", city:"Pereira, Av. 30 de Agosto", cityKey:["Pereira"], brands:"Multimarca usadas y alta gama", threat:3, why:"Fuerte en Instagram (6.222). Compra, venta y permuta"},
+    {n:"Moto Crédito Multimarca S.A.S.", city:"Pereira", cityKey:["Pereira"], brands:"AKT, Suzuki, UMA, Honda, Hero, Vento", threat:3, why:"El clon comercial de Ibiza: exactamente nuestras marcas. Vive en Facebook"},
+    {n:"Motos JYD (J&D Motos)", city:"Pereira · Manizales", cityKey:["Pereira"], brands:"Hero (punto autorizado)", threat:2, why:"El más constante en contenido: reels casi diarios. Financia a reportados"},
+    {n:"Grupo SuperMotos (Honda)", city:"Pereira · Armenia · Manizales", cityKey:["Pereira"], brands:"Honda", threat:2, why:"Cadena nacional con más de 80 puntos. Fuerte en posventa y agendamiento"},
+    {n:"Suzuki Pereira Principal", city:"Pereira, Cl 21 #12-84", cityKey:["Pereira"], brands:"Suzuki", threat:2, why:"Catálogo web con precios de $6.050.000 a $103.500.000"},
+    {n:"Aventura Motors (Auteco)", city:"Dosquebradas, Av. Simón Bolívar", cityKey:["Dosquebradas"], brands:"Kawasaki, Victory, Benelli, Kymco, Zontes, TVS", threat:1, why:"Alta gama. Compite poco de frente, mucho por imagen"},
+    {n:"Suzuki Motos Santa Rosa", city:"Santa Rosa de Cabal, Cl 17 #14-32", cityKey:["Santa Rosa"], brands:"Suzuki", threat:2, why:"A media cuadra de nuestra sede principal (Cra 14 #16-11)"},
+    {n:"Motos y Más Pereira", city:"Pereira", cityKey:["Pereira"], brands:"Nuevas y usadas", threat:2, why:"«Más de 30 años» + crédito directo: financian ellos mismos, sin banco"},
+    {n:"Tu Moto RAM", city:"Dosquebradas (dentro de Mobilautos)", cityKey:["Dosquebradas"], brands:"Usadas: Hero, Honda, Kymco, TVS, Victory", threat:1, why:"Tienda web de usadas con precios de $3,9M a $10,5M"},
+    {n:"Motos y Partes de Occidente", city:"Pereira, Cl 21 #12-74", cityKey:["Pereira"], brands:"—", threat:1, why:"Financia con Brilla de Efigas, la misma financiera que usamos"},
+    {n:"Motosport Suzuki Neiva", city:"Neiva (2) · La Plata · Campoalegre", cityKey:["Neiva"], brands:"Suzuki", threat:2, why:"Rival en Neiva. «Empresa 100 % huilense». Tiene Meta Pixel"},
+    {n:"Piajos Motos", city:"Neiva, Cra 5 #1G-45", cityKey:["Neiva"], brands:"Multimarca", threat:1, why:"Rival en Neiva"},
+    {n:"IBIZA MOTOS (nosotros)", city:"19 sedes: Pereira, Dosquebradas, Santa Rosa, Quimbaya, Montenegro, Viterbo, Chinchiná, Neiva", cityKey:["Pereira","Dosquebradas","Santa Rosa","Neiva"], brands:"Suzuki, Honda, Bajaj, AKT, Hero, Vento", threat:0, us:true, why:"La mayor cobertura de la zona y 8 financieras — sin comunicarlo"}
+  ],
+
+  tools: [
+    {n:"Zagamotos",              px:1, gtm:1, ga:1, chat:1, shop:1, kb:181,  us:false},
+    {n:"Zagamotos (catálogo)",   px:1, gtm:1, ga:1, chat:1, shop:1, kb:null, us:false},
+    {n:"Motosport Suzuki Neiva", px:1, gtm:0, ga:0, chat:0, shop:1, kb:1054, us:false},
+    {n:"Tu Moto RAM",            px:0, gtm:0, ga:1, chat:1, shop:1, kb:126,  us:false},
+    {n:"Suzuki Pereira",         px:0, gtm:0, ga:0, chat:0, shop:0, kb:40,   us:false},
+    {n:"Honda SuperMotos",       px:-1,gtm:-1,ga:-1,chat:-1,shop:-1,kb:null, us:false, note:"el sitio bloquea la revisión automática (error 403)"},
+    {n:"IBIZA MOTOS (nosotros)", px:0, gtm:0, ga:0, chat:0, shop:0, kb:7.6,  us:true}
+  ],
+
+  versus: [
+    {k:"Precios públicos", a:"En el catálogo, pero generados por JavaScript — los robots no los ven", b:"49 modelos con precio visible, con precio tachado y descuento"},
+    {k:"Descuentos", a:"No publicados", b:"3 % a 7 % visibles + «bonos de descuento»"},
+    {k:"Comprar o separar en línea", a:"No", b:"Sí — carrito y lista de deseos"},
+    {k:"Agendar taller", a:"Apagado («Próximamente»)", b:"Sí, citas de taller en línea"},
+    {k:"Financiación en la web", a:"Calculadora con 8 financieras ✓ esto sí es mejor que lo de ellos", b:"Sección «Crédito para motos» + Cupo Brilla", win:"a"},
+    {k:"Medición y remarketing", a:"Ninguna", b:"Tag Manager + Analytics + Meta Pixel"},
+    {k:"Lo que ve Google y WhatsApp", a:"7,6 KB — prácticamente solo el título", b:"181 KB — página completa con modelos y precios"}
+  ],
+
+  leads: [
+    {n:"Zagamotos", doors:"WhatsApp · chat en vivo · newsletter · citas de taller · carrito", c:4},
+    {n:"Honda SuperMotos", doors:"Teléfono por área (ventas/taller/repuestos) · «Agenda tu cita» · simulador de crédito", c:3},
+    {n:"Suzuki Pereira", doors:"WhatsApp · cotizador emergente · correo de ventas dedicado", c:3},
+    {n:"Motosport Suzuki Neiva", doors:"WhatsApp · teléfonos por área · agendar cita", c:3},
+    {n:"MotoCity", doors:"WhatsApp (link en bio)", c:1},
+    {n:"Motos JYD", doors:"WhatsApp (link en bio)", c:1},
+    {n:"IBIZA MOTOS (nosotros)", doors:"WhatsApp (link en bio)", c:1, us:true}
+  ],
+
+  hooks: [
+    {h:"«Solo con tu cédula»", who:"Zagamotos", why:"Elimina el miedo número uno: el papeleo"},
+    {h:"«Crédito rápido y sin complicaciones»", who:"Zagamotos", why:"En este segmento la velocidad pesa más que el precio"},
+    {h:"«Crédito directo» (financia el propio concesionario)", who:"Motos y Más Pereira", why:"Llega al cliente que ningún banco aprueba"},
+    {h:"Financian aunque el cliente esté reportado — aprobación en 4-5 días", who:"Motos JYD", why:"Captura al rechazado por centrales de riesgo, que es una tajada enorme del mercado"},
+    {h:"«Compra, vende o permuta» · «Recibimos tu moto»", who:"MotoCity, Zagamotos", why:"La usada del cliente es la cuota inicial. Genera lead y además inventario"},
+    {h:"Bono de SOAT y matrícula", who:"Motos JYD", why:"Regalo tangible de cerca de $1.000.000 sin tocar el precio de lista"},
+    {h:"«Diferentes medios de pago»", who:"MotoCity", why:"Habla de Sistecrédito, Addi y Brilla sin nombrarlos"},
+    {h:"Cupo Brilla de Efigas", who:"Zagamotos, Motos y Partes de Occidente", why:"En el Eje Cafetero el cupo del recibo del gas es casi una moneda local"},
+    {h:"Precio tachado con descuento", who:"Zagamotos", why:"Urgencia visible sin necesidad de anunciar «promoción»"},
+    {h:"Garantía 1 año / 12.000 km · técnicos certificados · repuestos originales", who:"Suzuki Pereira, Honda SuperMotos, Motosport Neiva", why:"La posventa como argumento de venta"}
+  ],
+
+  prices: [
+    {m:"AKT NKD 125",       now:5090000, was:5490000},
+    {m:"Suzuki AX4 ABS",    now:5996700, was:6350000},
+    {m:"AKT CR4 150",       now:7190000, was:7590000},
+    {m:"UMA Boxer CT 125",  now:6899000, was:null}
+  ],
+
+  plan: [
+    {p:0, t:"Despertar @ibizamotossas", d:"Tres publicaciones por semana rotando 4 temas (el formato probado de Motos JYD): ① moto + «desde $X al mes», ② cliente feliz recibiendo su moto, ③ «solo con tu cédula» y requisitos, ④ taller y repuestos."},
+    {p:0, t:"Reescribir la bio de Instagram", d:"Corregir «DISTRIBUDOR» y cambiar la lista de marcas por la oferta: 6 marcas · 19 sedes · 8 financieras · te aprobamos solo con tu cédula · recibimos tu moto como parte de pago."},
+    {p:0, t:"Instalar Meta Pixel + Google Analytics 4", d:"El archivo Analytics.tsx ya existe vacío; es cuestión de conectarlo. Sin esto, cualquier pauta futura es plata a ciegas."},
+    {p:0, t:"Revisar la Biblioteca de Anuncios de los 6 principales", d:"Anotar qué anuncios llevan más de un mes corriendo: esos son los que les están funcionando."},
+    {p:1, t:"Publicar precio y cuota mensual por modelo", d:"Como hace Zagamotos. El actualizador desde el Excel ya trae el dato: falta mostrarlo."},
+    {p:1, t:"Arreglar las vistas previas de enlaces y el SEO", d:"Meta tags por moto (título, foto y precio) con prerenderizado, para que el link que manda el asesor por WhatsApp llegue con foto, modelo y precio."},
+    {p:1, t:"Lanzar el gancho de permuta", d:"«Tu moto usada es tu cuota inicial». Es el que MotoCity y Zagamotos explotan y nosotros no."},
+    {p:1, t:"Reactivar el agendamiento de taller", d:"Hoy apagado por bandera de configuración. El taller es tráfico recurrente y la competencia ya lo usa como captador."},
+    {p:2, t:"Campañas de Meta por ciudad", d:"19 sedes = 19 públicos locales de 5 a 10 km, la ventaja que ningún competidor local puede copiar. Objetivo: mensajes a WhatsApp, que ya caen al CRM."},
+    {p:2, t:"Remarketing a quien vio una moto y no escribió", d:"Requiere el píxel instalado (tarea P0)."},
+    {p:2, t:"Abrir TikTok", d:"Canal vacío en esta plaza y con audiencia comprobada para «moto a crédito»."}
+  ],
+
+  ads: [
+    {n:"Zagamotos", q:"zagamotos"},
+    {n:"MotoCity", q:"motocity pereira"},
+    {n:"Moto Crédito Multimarca", q:"moto credito multimarca"},
+    {n:"Motos JYD", q:"motos jyd"},
+    {n:"Grupo SuperMotos (Honda)", q:"supermotos"},
+    {n:"Suzuki Pereira", q:"suzuki pereira"},
+    {n:"Aventura Motors", q:"aventura motors"},
+    {n:"Motosport Suzuki Neiva", q:"motosport neiva"},
+    {n:"⚡ Barrido general de la plaza", q:"motos a credito pereira", hi:true},
+    {n:"Ibiza Motos (control)", q:"ibiza motos", us:true}
+  ],
+
+  gaps: [
+    {k:"Anuncios activos exactos de cada competidor", w:"La API de Meta no cubre anuncios comerciales de Colombia", h:"En el navegador, con los links del Kit (10 minutos)"},
+    {k:"Publicaciones y seguidores de Facebook", w:"Facebook bloquea la lectura sin iniciar sesión", h:"En el navegador, desde la cuenta de la empresa"},
+    {k:"Vistas y likes por publicación", w:"Instagram no los entrega sin sesión", h:"Revisión manual mensual con la plantilla del Kit"},
+    {k:"Videos y métricas de TikTok", w:"TikTok bloquea los robots", h:"TikTok Creative Center + búsqueda manual"},
+    {k:"Presupuesto de pauta de la competencia", w:"No es público en ningún país", h:"Se estima por volumen de anuncios activos y por su duración"}
+  ]
+};
+
+/* ============================================================
+   UTILIDADES
+   ============================================================ */
+const $  = (s,r)=> (r||document).querySelector(s);
+const $$ = (s,r)=> Array.prototype.slice.call((r||document).querySelectorAll(s));
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nf  = n => n.toLocaleString("es-CO");
+const cop = n => "$" + n.toLocaleString("es-CO");
+
+function daysSince(iso){
+  const d = new Date(iso + "T12:00:00");
+  const now = new Date(DATA.asOf + "T12:00:00");
+  return Math.max(0, Math.round((now - d) / 86400000));
+}
+
+/* estado con icono + etiqueta — nunca color solo */
+function stat(v, yes, no){
+  if (v === -1) return '<span class="st st-na"><i>?</i>n/d</span>';
+  return v ? '<span class="st st-yes"><i>✓</i>'+esc(yes||"Sí")+'</span>'
+           : '<span class="st st-no"><i>✕</i>'+esc(no||"No")+'</span>';
+}
+
+/* ============================================================
+   PESTAÑAS
+   ============================================================ */
+$$(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    $$(".tab").forEach(b => b.setAttribute("aria-selected","false"));
+    btn.setAttribute("aria-selected","true");
+    $$(".panel").forEach(p => p.classList.remove("active"));
+    const panel = $("#p-" + btn.dataset.panel);
+    if (panel) panel.classList.add("active");
+    if (location.hash.slice(1) !== btn.dataset.panel) history.replaceState(null,"","#"+btn.dataset.panel);
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+});
+(function initTab(){
+  const h = location.hash.slice(1);
+  if (!h) return;
+  const b = $$(".tab").filter(t => t.dataset.panel === h)[0];
+  if (b) b.click();
+})();
+
+/* ============================================================
+   TEMA
+   ============================================================ */
+(function theme(){
+  const btn = $("#themeBtn");
+  let saved = null;
+  try { saved = localStorage.getItem("ibz-theme"); } catch(e){}
+  if (saved) document.documentElement.setAttribute("data-theme", saved);
+  btn.addEventListener("click", () => {
+    const cur = document.documentElement.getAttribute("data-theme");
+    const isDark = cur ? cur === "dark"
+                       : matchMedia("(prefers-color-scheme: dark)").matches;
+    const next = isDark ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("ibz-theme", next); } catch(e){}
+    redrawCharts();
+  });
+})();
+
+/* ============================================================
+   TOOLTIP
+   ============================================================ */
+const tipEl = $("#tip");
+function showTip(html, x, y){
+  tipEl.innerHTML = html;
+  tipEl.classList.add("on");
+  const r = tipEl.getBoundingClientRect();
+  let left = x + 14, top = y - r.height - 12;
+  if (left + r.width > innerWidth - 8) left = innerWidth - r.width - 8;
+  if (left < 8) left = 8;
+  if (top < 8) top = y + 18;
+  tipEl.style.left = left + "px";
+  tipEl.style.top  = top + "px";
+}
+function hideTip(){ tipEl.classList.remove("on"); }
+
+/* ============================================================
+   GRÁFICO DE BARRAS HORIZONTALES (forma: énfasis)
+   Acento = nosotros · gris = contexto.
+   Relevo obligatorio por contraste: etiqueta directa en cada
+   barra + vista de tabla. La identidad nunca depende del color.
+   ============================================================ */
+function barChart(host, rows, opts){
+  opts = opts || {};
+  const el = typeof host === "string" ? $(host) : host;
+  if (!el) return;
+
+  const W = 720, rowH = 40, padL = 168, padR = 78, padT = 10, padB = 30;
+  const H = padT + rows.length * rowH + padB;
+  const max = Math.max.apply(null, rows.map(r => r.v)) || 1;
+  const plotW = W - padL - padR;
+  const x = v => (v / max) * plotW;
+
+  // marcas de eje "bonitas": ~5 pasos, sin forzar el maximo (evita etiquetas pisadas)
+  const raw = max / 5;
+  const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const norm = raw / mag;
+  const step = (norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 2.5 ? 2.5 : norm <= 5 ? 5 : 10) * mag;
+  const ticks = [];
+  for (let t = 0; t <= max + 1e-9; t += step) ticks.push(t);
+
+  let s = '<svg class="chart-svg" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(opts.aria||"Gráfico de barras")+'">';
+
+  // rejilla recesiva
+  ticks.forEach(t => {
+    const px = padL + x(t);
+    s += '<line x1="'+px+'" y1="'+padT+'" x2="'+px+'" y2="'+(H-padB)+'" stroke="var(--grid)" stroke-width="1"/>';
+    s += '<text x="'+px+'" y="'+(H-padB+17)+'" font-size="11" fill="var(--text-muted)" text-anchor="middle">'+esc(opts.tickFmt?opts.tickFmt(t):nf(Math.round(t)))+'</text>';
+  });
+  // línea base
+  s += '<line x1="'+padL+'" y1="'+padT+'" x2="'+padL+'" y2="'+(H-padB)+'" stroke="var(--axis)" stroke-width="1"/>';
+
+  rows.forEach((r,i) => {
+    // 2px de separación entre barras adyacentes; marca delgada
+    const bh = 20;
+    const y  = padT + i*rowH + (rowH-bh)/2;
+    const w  = Math.max(3, x(r.v));
+    const fill = r.us ? "var(--accent)" : "var(--context)";
+    const label = opts.valFmt ? opts.valFmt(r) : nf(r.v);
+
+    // nombre (siempre presente: identidad sin depender del color)
+    s += '<text x="'+(padL-11)+'" y="'+(y+bh/2+4)+'" font-size="12.5" text-anchor="end" '
+       + 'fill="'+(r.us?"var(--accent)":"var(--text-secondary)")+'" '
+       + (r.us?'font-weight="700"':'font-weight="500"')+'>'+esc(r.name)+'</text>';
+
+    // barra con extremo redondeado de 4px anclada a la base
+    s += '<path class="bar" d="'+roundedRightBar(padL, y, w, bh, 4)+'" fill="'+fill+'"/>';
+
+    // etiqueta directa de valor (relevo por contraste)
+    s += '<text x="'+(padL+w+9)+'" y="'+(y+bh/2+4)+'" font-size="12.5" '
+       + 'fill="'+(r.us?"var(--accent)":"var(--text-secondary)")+'" font-weight="'+(r.us?"700":"600")+'">'+esc(label)+'</text>';
+
+    // zona de contacto mayor que la marca
+    s += '<rect class="barhit" x="'+padL+'" y="'+(padT+i*rowH)+'" width="'+(plotW+padR)+'" height="'+rowH+'" '
+       + 'data-i="'+i+'"><title>'+esc(r.name+": "+label)+'</title></rect>';
+  });
+
+  s += '</svg>';
+  el.innerHTML = s;
+
+  $$(".barhit", el).forEach(hit => {
+    const r = rows[+hit.dataset.i];
+    const move = ev => {
+      const p = ev.touches ? ev.touches[0] : ev;
+      showTip('<b>'+esc(r.name)+'</b><br>'+esc(opts.tipFmt ? opts.tipFmt(r) : nf(r.v)), p.clientX, p.clientY);
+    };
+    hit.addEventListener("mousemove", move);
+    hit.addEventListener("mouseenter", move);
+    hit.addEventListener("mouseleave", hideTip);
+    hit.addEventListener("touchstart", move, {passive:true});
+    hit.addEventListener("touchend", hideTip);
+  });
+}
+
+function roundedRightBar(x, y, w, h, r){
+  r = Math.min(r, w, h/2);
+  return "M"+x+","+y+" H"+(x+w-r)+" Q"+(x+w)+","+y+" "+(x+w)+","+(y+r)
+       + " V"+(y+h-r)+" Q"+(x+w)+","+(y+h)+" "+(x+w-r)+","+(y+h)+" H"+x+" Z";
+}
+
+/* vista de tabla equivalente (accesibilidad + relevo) */
+function chartTable(hostId, rows, cols){
+  let s = '<div class="tablewrap"><table><thead><tr>';
+  cols.forEach(c => s += '<th'+(c.num?' class="num"':'')+'>'+esc(c.h)+'</th>');
+  s += '</tr></thead><tbody>';
+  rows.forEach(r => {
+    s += '<tr'+(r.us?' class="is-us"':'')+'>';
+    cols.forEach(c => s += '<td'+(c.num?' class="num"':'')+'>'+c.f(r)+'</td>');
+    s += '</tr>';
+  });
+  s += '</tbody></table></div>';
+  $("#"+hostId+"-table").innerHTML = s;
+}
+
+$$(".viewtoggle").forEach(b => {
+  b.addEventListener("click", () => {
+    const id = b.dataset.toggle;
+    const chart = $("#"+id), table = $("#"+id+"-table");
+    const showTable = !chart.hidden;
+    chart.hidden = showTable;
+    table.hidden = !showTable;
+    b.textContent = showTable ? "Ver como gráfico" : "Ver como tabla";
+  });
+});
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+function redrawCharts(){
+  const f = DATA.followers.slice().sort((a,b)=>b.v-a.v);
+  barChart("#chartFollowers", f, {
+    aria:"Seguidores en Instagram por concesionario",
+    tipFmt: r => nf(r.v)+" seguidores<br>última publicación: "+r.last
+  });
+
+  const sil = DATA.followers.map(r => ({name:r.name, v:daysSince(r.last), us:r.us, last:r.last}))
+                            .sort((a,b)=>b.v-a.v);
+  barChart("#chartSilence", sil, {
+    aria:"Días sin publicar en Instagram por concesionario",
+    valFmt: r => r.v + " d",
+    tickFmt: t => Math.round(t)+" d",
+    tipFmt: r => r.v+" días sin publicar<br>última: "+r.last
+  });
+}
+
+function render(){
+  /* KPI días */
+  const me = DATA.followers.filter(r=>r.us)[0];
+  $("#kpiDias").textContent = daysSince(me.last) + " días";
+
+  redrawCharts();
+
+  /* tablas equivalentes a los gráficos */
+  chartTable("chartFollowers", DATA.followers.slice().sort((a,b)=>b.v-a.v), [
+    {h:"Cuenta", f:r=>esc(r.name)+(r.us?" (nosotros)":"")},
+    {h:"Seguidores", num:true, f:r=>nf(r.v)},
+    {h:"Última publicación", f:r=>esc(r.last)}
+  ]);
+  chartTable("chartSilence", DATA.followers.map(r=>({name:r.name,v:daysSince(r.last),us:r.us,last:r.last})).sort((a,b)=>b.v-a.v), [
+    {h:"Cuenta", f:r=>esc(r.name)+(r.us?" (nosotros)":"")},
+    {h:"Días sin publicar", num:true, f:r=>nf(r.v)},
+    {h:"Última publicación", f:r=>esc(r.last)}
+  ]);
+
+  /* bios */
+  $("#tBios tbody").innerHTML = DATA.bios.map(b =>
+    '<tr'+(b.us?' class="is-us"':'')+'><td class="rowname">'+esc(b.n)+'</td>'
+    + '<td class="num">'+nf(b.f)+'</td><td>'+esc(b.last)+'</td><td>'+esc(b.hook)+'</td></tr>'
+  ).join("");
+
+  /* rivales */
+  renderRivals();
+
+  /* herramientas */
+  $("#tTools tbody").innerHTML = DATA.tools.map(t =>
+    '<tr'+(t.us?' class="is-us"':'')+'>'
+    + '<td class="rowname">'+esc(t.n)+(t.note?'<br><span class="muted" style="font-weight:400;font-size:.8rem">'+esc(t.note)+'</span>':'')+'</td>'
+    + '<td>'+stat(t.px)+'</td><td>'+stat(t.gtm)+'</td><td>'+stat(t.ga)+'</td>'
+    + '<td>'+stat(t.chat)+'</td><td>'+stat(t.shop)+'</td>'
+    + '<td class="num">'+(t.kb==null?'<span class="muted">—</span>':(t.kb+" KB"))+'</td></tr>'
+  ).join("");
+
+  /* versus */
+  $("#tVersus tbody").innerHTML = DATA.versus.map(v =>
+    '<tr><td class="rowname">'+esc(v.k)+'</td>'
+    + '<td'+(v.win==="a"?' style="color:var(--good-ink);font-weight:600"':'')+'>'+esc(v.a)+'</td>'
+    + '<td>'+esc(v.b)+'</td></tr>'
+  ).join("");
+
+  /* leads */
+  $("#tLeads tbody").innerHTML = DATA.leads.map(l =>
+    '<tr'+(l.us?' class="is-us"':'')+'><td class="rowname">'+esc(l.n)+'</td>'
+    + '<td>'+esc(l.doors)+'</td><td class="num">'+l.c+'</td></tr>'
+  ).join("");
+
+  /* ganchos */
+  $("#tHooks tbody").innerHTML = DATA.hooks.map(h =>
+    '<tr><td class="rowname">'+esc(h.h)+'</td><td>'+esc(h.who)+'</td><td>'+esc(h.why)+'</td></tr>'
+  ).join("");
+
+  /* precios */
+  $("#tPrices tbody").innerHTML = DATA.prices.map(p => {
+    const d = p.was ? Math.round((1 - p.now/p.was)*100) : null;
+    return '<tr><td class="rowname">'+esc(p.m)+'</td><td class="num">'+cop(p.now)+'</td>'
+      + '<td class="num muted">'+(p.was?cop(p.was):"—")+'</td>'
+      + '<td class="num">'+(d?'<span class="st st-yes"><i>↓</i>'+d+' %</span>':'<span class="muted">—</span>')+'</td></tr>';
+  }).join("");
+
+  /* huecos */
+  $("#tGaps tbody").innerHTML = DATA.gaps.map(g =>
+    '<tr><td class="rowname">'+esc(g.k)+'</td><td>'+esc(g.w)+'</td><td>'+esc(g.h)+'</td></tr>'
+  ).join("");
+
+  /* links biblioteca de anuncios */
+  $("#adLinks").innerHTML = DATA.ads.map((a,i) => {
+    const url = "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=CO&q="
+              + encodeURIComponent(a.q) + "&search_type=keyword_unordered&media_type=all";
+    return '<div class="linkrow"'+(a.us?' style="border-color:var(--accent)"':'')+'>'
+      + '<span class="lname">'+esc(a.n)+'</span>'
+      + '<a class="btn '+(a.hi?'primary':'')+'" target="_blank" rel="noopener" href="'+esc(url)+'">Ver anuncios</a>'
+      + '<button class="btn" data-copy="'+esc(url)+'">Copiar link</button></div>';
+  }).join("");
+
+  /* links instagram */
+  $("#igLinks").innerHTML = DATA.followers.slice().sort((a,b)=>b.v-a.v).map(f =>
+    '<div class="linkrow"'+(f.us?' style="border-color:var(--accent)"':'')+'>'
+    + '<span class="lname">'+esc(f.name)+(f.us?' <span class="muted">(nosotros)</span>':'')+'</span>'
+    + '<span class="muted" style="font-variant-numeric:tabular-nums">'+nf(f.v)+' seg.</span>'
+    + '<a class="btn" target="_blank" rel="noopener" href="https://www.instagram.com/'+esc(f.handle)+'/">@'+esc(f.handle)+'</a></div>'
+  ).join("");
+
+  /* plan */
+  renderPlan();
+
+  /* copiar */
+  document.addEventListener("click", ev => {
+    const b = ev.target.closest("[data-copy]");
+    if (!b) return;
+    const txt = b.dataset.copy;
+    const done = () => {
+      const old = b.textContent;
+      b.textContent = "✓ Copiado"; b.classList.add("copied");
+      setTimeout(()=>{ b.textContent = old; b.classList.remove("copied"); }, 1400);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(done, fallback);
+    } else fallback();
+    function fallback(){
+      const ta = document.createElement("textarea");
+      ta.value = txt; ta.style.position="fixed"; ta.style.opacity="0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+}
+
+/* ---- competidores: filtro + búsqueda ---- */
+let cityFilter = "all";
+function renderRivals(){
+  const q = ($("#qRivals").value || "").trim().toLowerCase();
+  const threatLabel = t => t===3 ? '<span class="st st-no"><i>!</i>Alta</span>'
+                        : t===2 ? '<span class="st st-warn"><i>!</i>Media</span>'
+                        : t===1 ? '<span class="st st-na"><i>·</i>Baja</span>'
+                        : '<span class="st st-yes"><i>★</i>Nosotros</span>';
+  const rows = DATA.rivals.filter(r => {
+    const okCity = cityFilter === "all" || (r.cityKey||[]).indexOf(cityFilter) !== -1;
+    const hay = (r.n+" "+r.city+" "+r.brands+" "+r.why).toLowerCase();
+    return okCity && (!q || hay.indexOf(q) !== -1);
+  });
+  $("#tRivals tbody").innerHTML = rows.length
+    ? rows.map(r => '<tr'+(r.us?' class="is-us"':'')+'>'
+        + '<td class="rowname">'+esc(r.n)+'</td><td>'+esc(r.city)+'</td>'
+        + '<td>'+esc(r.brands)+'</td><td>'+threatLabel(r.threat)+'</td><td>'+esc(r.why)+'</td></tr>').join("")
+    : '<tr><td colspan="5" class="muted" style="padding:22px;text-align:center">Sin resultados para ese filtro.</td></tr>';
+  $("#rivalCount").textContent = "Mostrando " + rows.length + " de " + DATA.rivals.length + " · datos del 22 de septiembre de 2026";
+}
+$("#qRivals").addEventListener("input", renderRivals);
+$$(".pill[data-city]").forEach(p => p.addEventListener("click", () => {
+  $$(".pill[data-city]").forEach(o => o.setAttribute("aria-pressed","false"));
+  p.setAttribute("aria-pressed","true");
+  cityFilter = p.dataset.city;
+  renderRivals();
+}));
+
+/* ---- plan con checklist persistente ---- */
+const PKEY = "ibz-plan-v1";
+function planState(){
+  try { return JSON.parse(localStorage.getItem(PKEY) || "{}"); } catch(e){ return {}; }
+}
+function savePlan(s){ try { localStorage.setItem(PKEY, JSON.stringify(s)); } catch(e){} }
+
+function renderPlan(){
+  const st = planState();
+  const groups = [
+    {p:0, tag:"P0", cls:"p0", title:"Esta semana — costo casi cero"},
+    {p:1, tag:"P1", cls:"p1", title:"Dos a cuatro semanas"},
+    {p:2, tag:"P2", cls:"p2", title:"Con presupuesto de pauta"}
+  ];
+  $("#planHost").innerHTML = groups.map(g => {
+    const items = DATA.plan.map((t,i)=>({t:t,i:i})).filter(o => o.t.p === g.p);
+    return '<div class="phase"><div class="phase-head">'
+      + '<span class="phase-tag '+g.cls+'">'+g.tag+'</span><h3 style="margin:0">'+esc(g.title)+'</h3></div>'
+      + items.map(o =>
+          '<label class="task'+(st["t"+o.i]?" done":"")+'" data-i="'+o.i+'">'
+          + '<input type="checkbox" '+(st["t"+o.i]?"checked":"")+'>'
+          + '<span class="task-body"><span class="task-t">'+esc(o.t.t)+'</span>'
+          + '<span class="task-d">'+esc(o.t.d)+'</span></span></label>'
+        ).join("")
+      + '</div>';
+  }).join("");
+
+  $$("#planHost input[type=checkbox]").forEach(cb => {
+    cb.addEventListener("change", () => {
+      const lab = cb.closest(".task");
+      const s = planState();
+      s["t"+lab.dataset.i] = cb.checked;
+      savePlan(s);
+      lab.classList.toggle("done", cb.checked);
+      updateProgress();
+    });
+  });
+  updateProgress();
+}
+function updateProgress(){
+  const st = planState();
+  const done = DATA.plan.filter((_,i) => st["t"+i]).length;
+  const pct = Math.round(done / DATA.plan.length * 100);
+  $("#progFill").style.width = pct + "%";
+  $("#progLabel").textContent = done + " de " + DATA.plan.length + " (" + pct + " %)";
+}
+$("#resetPlan").addEventListener("click", () => {
+  try { localStorage.removeItem(PKEY); } catch(e){}
+  renderPlan();
+});
+
+/* arranque */
+render();
+addEventListener("resize", () => { clearTimeout(window.__rt); window.__rt = setTimeout(redrawCharts, 180); });
+</script>
+</body>
+</html>
